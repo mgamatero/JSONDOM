@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JSON DOM</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="http://code.jquery.com/jquery-1.12.4.min.js"
+        integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+
+</head>
+
+<body class="container mt-4">
+    <h1 class="m-5 text-center text-light">People from JSON</h1>
+    <div id="result" ></div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+
+            //JSON OBJECT
+            var peopleJSON =
+                [
+                    {
+                        "name": "John Snow",
+                        "age": 23,
+                        "occupation": "King of the North",
+                        "hobbies": [
+                            "Bowling",
+                            "Tennis"
+                        ]
+                    }
+                    ,
+                    {
+                        "name": "Cersei",
+                        "age": 25,
+                        "occupation": "Khaleesi",
+                        "hobbies": [
+                            "Soccer",
+                            "Food Tasting"
+                        ]
+                    },
+                    {
+                        "name": "Tyrion",
+                        "age": 23,
+                        "occupation": "Hand of the King",
+                        "hobbies": [
+                            "Video Games"
+                        ]
+                    },
+                    {
+                        "name": "Bran",
+                        "age": 18,
+                        "occupation": "Three-Eyed Raven",
+                        "hobbies": [
+                            "Video Games"
+                        ]
+                    }
+                ]
+
+                
+                
+var detailBody=''
+
+for(var i=0;i<peopleJSON.length;i++){
+            $("#result").append(`<h3 class="border p-3">${peopleJSON[i].name}'s Information</h3>`)
+
+            detailBody = `<div class="detail p-3">`
+            
+            for (key in peopleJSON[i]) {
+                if (key === 'hobbies') {
+                    detailBody = detailBody + `<div>${key}</div>`
+                    var hobbylist = ''
+                    for (hobbyKey in peopleJSON[i][key]) {
+                        hobbylist = hobbylist + `<li>${peopleJSON[i][key][hobbyKey]}</li>`
+                    }
+                    detailBody = detailBody +`<ul> ${hobbylist} </ul>`
+               
+                }
+                else{
+            detailBody = detailBody + `<div>${key}: ${peopleJSON[i][key]}</div>`
+                }
+           
+            }
+            detailBody = detailBody + `</div>`
+            $('#result').append(detailBody)
+
+}
+
+// for(var i=0;i<peopleJSON.length;i++){
+//             $("#result").append(`<h3>${peopleJSON[i].name}'s Information</h3>`)
+            
+//             var detailBody=''
+//             for (key in peopleJSON[i]) {
+//                 if (key === 'hobbies') {
+//                     $("#result").append(`<div>${key}</div>`)
+//                     var hobbylist = ''
+//                     for (hobbyKey in peopleJSON[i][key]) {
+//                         hobbylist = hobbylist + (`<li>${peopleJSON[i][key][hobbyKey]}</li>`)
+//                     }
+//                     $("#result").append(`<ul> ${hobbylist}`)
+               
+//                 }
+//                 else{
+//             $("#result").append(`<div>${key} :${peopleJSON[i][key]}</div>`)
+//                 }
+           
+//             }
+
+// }
+
+$(document).on('click', 'h3', function () {
+    
+						$(this).next().toggleClass("closed");
+									})
+        });
+    </script>
+</body>
+
+</html>

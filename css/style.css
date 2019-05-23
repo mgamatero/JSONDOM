@@ -1,0 +1,28 @@
+body{
+    font-family: 'Raleway', sans-serif;
+    font-size: 20px;
+    line-height:120%;
+    background-color: #70A3FF;
+    
+}
+
+.closed{
+    display:none;
+
+}
+
+h3 {
+    color: #FFDA8A;
+}
+
+h3:hover{
+    background-color: #2B5BB3;
+}
+
+.detail{
+    color:#FFDA8A;
+}
+
+.detail div:nth-child(odd) {
+    background-color: rgb(120, 199, 248);
+}
